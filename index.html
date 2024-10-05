@@ -79,20 +79,22 @@
           </svg>
         </button>
       </div>
-      <div class="hidden lg:inline-block " id="parentlist" onmouseenter="pEnter()" onmouseleave="pLeave()">
-        <div class="text-lg lg:flex-grow relative">
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4 "
-          >
-            Plants
-          
-          </a>
-          <ul class="absolute py-8 pr-8 pl-2 border border-black hidden " id="childlist" style="background-color: #fff9f0;left:-9px" onmouseenter="cEnter()" onmouseleave="cLeave()">
-            <li class="hover:underline"><a href="#">Potted Plants</a></li>
-            <li class="hover:underline"><a href="#">Planters</a></li>
-            <li class="hover:underline"><a href="#">Essentials</a></li>
-          </ul>
+      <div class="hidden lg:inline-block" >
+        <div class="text-lg block lg:flex  lg:flex-grow relative">
+         <div id="parentlist" style="width: fit-content ;"onmouseenter="pEnter()" onmouseleave="pLeave()">
+            <a
+              href="#responsive-header"
+              class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4 "
+            >
+              Plants
+            
+            </a>
+            <ul class="absolute py-8 pr-8 pl-2 border border-black hidden " id="childlist" style="background-color: #fff9f0;left:-9px" onmouseenter="cEnter()" onmouseleave="cLeave()">
+              <li class="hover:underline"><a href="#">Potted Plants</a></li>
+              <li class="hover:underline"><a href="#">Planters</a></li>
+              <li class="hover:underline"><a href="#">Essentials</a></li>
+            </ul>
+         </div>
           <a
             href="#responsive-header"
             class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
