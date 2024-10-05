@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoilBoy</title>
+    
+    <!-- ----------- Tailwind cdn ---------------- -->
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "custom-back": "#fff9f0",
+              "custom-green": "#13ce66",
+            },
+            gridTemplateColumns: {
+              "custom-col": "1fr",
+            },
+            screens: {
+              md: "900px",
+            },
+          },
+        },
+      };
+
+      
+    </script>
+    <!-- ---------------- Font-Awesome cdn --------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ----------------- Font Aktiv grotesk -------------------- -->
+    <link
+      href="https://db.onlinewebfonts.com/c/3df90868b9a2eec4a3538e88d8b3b234?family=Aktiv+Grotesk+Ex"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Aktiv Grotesk Ex";
+      }
+
+      /* .head{
+        font-size: 2.2vw;
+
+      } */
+
+      .shadow-bottom {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+  </head>
+  <body style="background-color: #fff9f0">
+    <nav
+      class="flex items-center justify-between flex-wrap bg-custom-back p-6 mb-5 shadow-bottom"
+    >
+      <div class="lg:hidden">
+        <button
+          onclick="display()"
+          class="flex items-center border-none px-3 py-2 text-black hover:text-black"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:inline-block " id="parentlist" onmouseenter="pEnter()" onmouseleave="pLeave()">
+        <div class="text-lg lg:flex-grow relative">
+          <a
+            href="#responsive-header"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4 "
+          >
+            Plants
+          
+          </a>
+          <ul class="absolute py-8 pr-8 pl-2 border border-black hidden " id="childlist" style="background-color: #fff9f0;left:-9px" onmouseenter="cEnter()" onmouseleave="cLeave()">
+            <li class="hover:underline"><a href="#">Potted Plants</a></li>
+            <li class="hover:underline"><a href="#">Planters</a></li>
+            <li class="hover:underline"><a href="#">Essentials</a></li>
+          </ul>
+          <a
+            href="#responsive-header"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+          >
+            Workshops
+          </a>
+          <a
+            href="#responsive-header"
+            class="hidden mt-4 lg:inline-block lg:mt-0 text-black hover:text-black"
+          >
+            Lifestyle
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center flex-shrink-0 text-black mr-6">
+        <!-- <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+          <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span> -->
+        <h1 class="text-black text-4xl font-bold">soilboy.</h1>
+      </div>
+
+      <div class="inline-block lg:hidden">
+        <i class="fa-solid fa-cart-shopping" style="color: black"></i>
+        <span class="text-black">0</span>
+      </div>
+      <div
+        class="w-full hidden lg:flex lg:items-center lg:w-auto"
+        id="menu-items" 
+      >
+      <div class="text-lg lg:hidden">
+        <a
+          href="#"
+          class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+          onclick="location.reload()"
+        >
+          Plants
+
+          
+        </a>
+        <a
+          href="#"
+          class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+          onclick="location.reload()"
+        >
+          Workshops
+        </a>
+        <a
+          href="#"
+          class="hidden mt-4 lg:inline-block lg:mt-0 text-black hover:text-black"
+          onclick="location.reload()"
+        >
+          Lifestyle
+        </a>
+      </div>
+        <div class="text-lg"  >
+          <a
+            href="#"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+            onclick="location.reload()"
+          >
+            Login
+          </a>
+          <a
+            href="#"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+            onclick="location.reload()"
+          >
+            <i class="fa-brands fa-instagram" style="color: black"></i>
+          </a>
+          <a
+            href="#"
+            class="hidden mt-4 mr-10 lg:inline-block lg:mt-0 text-black hover:text-black"
+          >
+            <i class="fa-solid fa-cart-shopping" style="color: black"></i>
+            <span>0</span>
+          </a>
+
+          <a
+            href="#"
+            class="inline-block text-lg px-10 py-4 leading-none border rounded-full text-black border-black hover:border-black hover:text-white hover:bg-black mt-4 lg:mt-0"
+            onclick="location.reload()"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </nav>
+    <main class="lg:block" style="margin-top: 130px;">
+      <div class="filter-div inline-block items-center ml-6">
+        <button
+          class="inline-block focus:outline-none cursor-pointer text-xl"
+          onclick="change()"
+        >
+          Filters
+        </button>
+        <span id="filter" class="text-xl">+</span>
+      </div>
+      <div
+        id="plantsgrid"
+        class="grid grid-cols-1 place-items-center p-5 sm:grid-cols-2 md:grid-cols-3 gap-4"
+      ></div>
+    </main>
+    <!-- <div class="md:bg-black" style="height: 200px; width: 100px"></div> -->
+
+    <footer
+      class="px-10 pt-8 pb-5 grid grid-cols-custom-col md:grid-cols-4 grid-rows-[auto auto] gap-4 text-white"
+      style="background-color: #262626"
+    >
+      <div class="left md:row-span-1 md:col-span-2 mb-8">
+        <h1 style="font-size: calc(0.35vw + 1.5rem)" class="mb-4">
+          Stay Updated
+        </h1>
+        <p class="mb-10" style="font-size: calc(0.35vw + 0.8rem)">
+          Sign up with your email address to receive news and updates.
+        </p>
+        <h3 class="mb-4">Email Address</h3>
+        <div class="input-div flex flex-wrap items-center gap-4">
+          <input
+            type="text"
+            placeholder="Enter you email"
+            style="padding: 22.4px 32px"
+            class="text-black"
+          />
+          <button
+            style="border-radius: 25px"
+            type="button"
+            class="rounded-full text-white px-8 py-5 border-2 border-white hover:bg-white hover:text-black"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+      <div class="right md:row-span-1 flex justify-start gap-x-8 h-full">
+        <ul>
+          <li class="head mb-6 text-2xl">Info</li>
+          <li class="mb-2">
+            <a href="#" class="underline text-base">About</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="underline text-base">Plant Care</a>
+          </li>
+        </ul>
+        <ul>
+          <li class="head mb-6 text-2xl">Follow</li>
+          <li class="mb-2">
+            <a href="#" class="underline text-base">Facebook</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="underline text-base">Instagram</a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="copyright md:row-span-2 flex flex-col justify-between md:items-end pr-10"
+      >
+        <ul>
+          <li class="head mb-6 text-2xl mt-8 md:mt-0">Contact</li>
+          <li class="mb-2"><a href="#" class="text-base">46 Kim Yam</a></li>
+          <li class="mb-2"><a href="#" class="text-base">Road</a></li>
+          <li class="mb-2"><a href="#" class="text-base">#02-07/8,</a></li>
+          <li class="mb-2"><a href="#" class="text-base">S239351</a></li>
+          <li class="mb-2">
+            <a href="#" class="underline mt-4 text-base">hello@soilboy.sg</a>
+          </li>
+        </ul>
+        <p class="hidden lg:inline-block">Soilboy © 2022</p>
+      </div>
+      <div
+        class="leftfaq fit-content md:row-span-1 md:col-span-3 flex gap-x-4 justify-left mt-4 md:mt-0"
+      >
+        <p class="underline">FAQs and Delivery</p>
+        <p class="underline">Privacy Policy</p>
+      </div>
+      <div>
+        <p class="lg:hidden mt-4 md:mt-0">Soilboy © 2022</p>
+      </div>
+    </footer>
+    <script src="./plants.js"></script>
+  </body>
+</html>
+
+<!-- Stay Updated
+Sign up with your email address to receive news and updates.
+
+Email Address
+ Sign Up -->
+
+<!-- <div class="left mb-8 row-start-1 row-end-2 col-start-1 col-end-3">
+  <h1 style="font-size:calc(0.35vw + 1.5rem);" class="mb-4 mt-6">Stay Updated</h1>
+  <p class="mb-10" style="font-size:calc(0.35vw + 0.8rem);">Sign up with your email address to receive news and updates.</p>
+  <h3 class="mb-4">Email Address</h3>
+  <div class="input-div flex items-center gap-x-4" >
+    <input type="text" placeholder="Enter you email" style="padding:22.4px 32px" class="text-black"><button style="border-radius:25px;"type="button" class="rounded-full text-white  px-8 py-5 border-2 border-white hover:bg-white hover:text-black ">Sign Up</button>
+  </div>
+</div>
+<div class="right row-start-1 row-end-2 col-start-3 col-end-4 flex justify-evenly gap-x-8 h-full mt-6 ">
+  <ul>
+    <li class="head mb-6 text-2xl">Info</li>
+    <li class="mb-2"><a href="#" class="underline text-base">About</a></li>
+    <li class="mb-2"><a href="#" class="underline text-base">Plant Care</a></li>
+  </ul>
+  <ul>
+    <li class="head mb-6 text-2xl">Follow</li>
+    <li class="mb-2"><a href="#" class="underline text-base">Facebook</a></li>
+    <li class="mb-2"><a href="#" class="underline text-base">Instagram</a></li>
+  </ul>
+
+
+</div>
+<div class="copyright row-start-1 row-end-3  col-start-4 col-end-5 flex flex-col  pr-10">
+  <ul>
+    <li class="head mb-6 text-2xl">Contact</li>
+    <li class="mb-2"><a href="#" class="text-base">46 Kim Yam</a></li>
+    <li class="mb-2"><a href="#" class="text-base">Road</a></li>
+    <li class="mb-2"><a href="#" class="text-base">#02-07/8,</a></li>
+    <li class="mb-2"><a href="#" class="text-base">S239351</a></li>
+    <li class="mb-2"><a href="#" class="underline mt-4 text-base">hello@soilboy.sg</a></li>
+  </ul>
+  <p>Soilboy © 2022</p>
+</div>
+<div class="leftfaq row-start-2 row-end-3 col-start-1 col-end-3 flex gap-x-4 justify-left">
+  <p class="underline">FAQs and Delivery</p>
+  <p class="underline">Privacy Policy</p>
+</div> -->
