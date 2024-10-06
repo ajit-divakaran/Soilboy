@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SoilBoy</title>
-    
+
     <!-- ----------- Tailwind cdn ---------------- -->
     <link
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
@@ -27,8 +27,6 @@
           },
         },
       };
-
-      
     </script>
     <!-- ---------------- Font-Awesome cdn --------------- -->
     <link
@@ -46,21 +44,52 @@
     />
 
     <style>
-      * {
+      /* :not(.login>*){
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      } */
+      *{
         font-family: "Aktiv Grotesk Ex";
       }
+      .login>*{
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        &>*{
+          font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+      }
 
+      #loginbtn:hover{
+          color:#6ebcf5
+      }
+      
       /* .head{
         font-size: 2.2vw;
 
       } */
 
       .shadow-bottom {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
     </style>
   </head>
-  <body style="background-color: #fff9f0">
+  <body style="background-color: #fff9f0" class="relative">
+
+
+      <section class="hidden absolute h-screen w-screen flex justify-center items-center" id="logsec"  style=" z-index: 1; background-color: #26262634;">
+        <div class="w-2/4 h-100 login flex flex-col gap-y-4 justify-center items-center p-10" id="logele"
+        style="background-color: #d7c7b8;">
+          <h2 class="text-black text-2xl text-center">Welcome to Soilboy</h2>
+          <input type="email " placeholder="Enter your Email" class="w-10/12  pl-4 py-4" />
+          <input type="password" placeholder="Enter your Password" class="w-10/12 pl-4 py-4" />
+          <button class="w-10/12 py-2 text-xl rounded" style="background-color: rgb(165, 79, 42); color: bisque;">Sign In</button>
+          <div class="flex justify-center gap-x-4 text-sm">
+            <a href="#" class="text-grey-100">Forgot Password</a
+            ><a href="#">Create account</a>
+          </div>
+          <button class="text-center py-2 px-6 rounded" style="background-color: rgb(165, 79, 42);" onclick="closeLogin()" id="close">Close</button>
+        </div>
+      </section>
+   
     <nav
       class="flex items-center justify-between flex-wrap bg-custom-back p-6 mb-5 shadow-bottom"
     >
@@ -79,31 +108,41 @@
           </svg>
         </button>
       </div>
-      <div class="hidden lg:inline-block" >
-        <div class="text-lg block lg:flex  lg:flex-grow relative">
-         <div id="parentlist" style="width: fit-content ;"onmouseenter="pEnter()" onmouseleave="pLeave()">
+      <div class="hidden lg:inline-block">
+        <div class="text-lg block lg:flex lg:flex-grow relative">
+          <div
+            id="parentlist"
+            style="width: fit-content"
+            onmouseenter="pEnter()"
+            onmouseleave="pLeave()"
+          >
             <a
-              href="#responsive-header"
-              class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4 "
+              href="#"
+              class="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline hover:text-black mr-4"
             >
               Plants
-            
             </a>
-            <ul class="absolute py-8 pr-8 pl-2 border border-black hidden " id="childlist" style="background-color: #fff9f0;left:-9px" onmouseenter="cEnter()" onmouseleave="cLeave()">
+            <ul
+              class="absolute py-8 pr-8 pl-2 border border-black hidden"
+              id="childlist"
+              style="background-color: #fff9f0; left: -9px"
+              onmouseenter="cEnter()"
+              onmouseleave="cLeave()"
+            >
               <li class="hover:underline"><a href="#">Potted Plants</a></li>
               <li class="hover:underline"><a href="#">Planters</a></li>
               <li class="hover:underline"><a href="#">Essentials</a></li>
             </ul>
-         </div>
+          </div>
           <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+            href="https://anzalsidhikh.github.io/Soilboy-/"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black hover:underline mr-4"
           >
             Workshops
           </a>
           <a
-            href="#responsive-header"
-            class="hidden mt-4 lg:inline-block lg:mt-0 text-black hover:text-black"
+            href="https://spyro272.github.io/SoilBoy/"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline hover:text-black"
           >
             Lifestyle
           </a>
@@ -116,43 +155,44 @@
       </div>
 
       <div class="inline-block lg:hidden">
-        <i class="fa-solid fa-cart-shopping" style="color: black"></i>
-        <span class="text-black">0</span>
+        <a href="https://anzalsidhikh.github.io/Soilboy-/cart.html">
+          <i class="fa-solid fa-cart-shopping" style="color: black"></i>
+          <span class="text-black">0</span>
+        </a>
       </div>
       <div
         class="w-full hidden lg:flex lg:items-center lg:w-auto"
-        id="menu-items" 
+        id="menu-items"
       >
-      <div class="text-lg lg:hidden">
-        <a
-          href="#"
-          class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
-          onclick="location.reload()"
-        >
-          Plants
-
-          
-        </a>
-        <a
-          href="#"
-          class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
-          onclick="location.reload()"
-        >
-          Workshops
-        </a>
-        <a
-          href="#"
-          class="hidden mt-4 lg:inline-block lg:mt-0 text-black hover:text-black"
-          onclick="location.reload()"
-        >
-          Lifestyle
-        </a>
-      </div>
-        <div class="text-lg"  >
+        <div class="text-lg lg:hidden">
           <a
             href="#"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4"
+            class="block mt-4 font-bold lg:inline-block lg:mt-0 text-black hover:underline mr-4"
             onclick="location.reload()"
+          >
+            Plants
+          </a>
+          <a
+            href="https://anzalsidhikh.github.io/Soilboy-/"
+            class="block mt-4 font-bold lg:inline-block lg:mt-0 text-black hover:text-black hover:underline mr-4"
+            onclick="location.reload()"
+          >
+            Workshops
+          </a>
+          <a
+            href="https://spyro272.github.io/SoilBoy/"
+            class="block mt-4 lg:inline-block lg:mt-0 font-bold text-black hover:text-black hover:underline"
+            onclick="location.reload()"
+          >
+            Lifestyle
+          </a>
+        </div>
+        <div class="text-lg">
+          <a
+            href="#"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
+            id="loginbtn"
+            onclick="showLogin()"
           >
             Login
           </a>
@@ -164,7 +204,7 @@
             <i class="fa-brands fa-instagram" style="color: black"></i>
           </a>
           <a
-            href="#"
+            href="https://anzalsidhikh.github.io/Soilboy-/"
             class="hidden mt-4 mr-10 lg:inline-block lg:mt-0 text-black hover:text-black"
           >
             <i class="fa-solid fa-cart-shopping" style="color: black"></i>
@@ -172,7 +212,7 @@
           </a>
 
           <a
-            href="#"
+            href="https://amjwizard18.github.io/tailwind/#"
             class="inline-block text-lg px-10 py-4 leading-none border rounded-full text-black border-black hover:border-black hover:text-white hover:bg-black mt-4 lg:mt-0"
             onclick="location.reload()"
             >Contact Us</a
@@ -180,7 +220,7 @@
         </div>
       </div>
     </nav>
-    <main class="lg:block" style="margin-top: 130px;">
+    <main class="lg:block" style="margin-top: 130px">
       <div class="filter-div inline-block items-center ml-6">
         <button
           class="inline-block focus:outline-none cursor-pointer text-xl"
@@ -263,8 +303,8 @@
       <div
         class="leftfaq fit-content md:row-span-1 md:col-span-3 flex gap-x-4 justify-left mt-4 md:mt-0"
       >
-        <p class="underline">FAQs and Delivery</p>
-        <p class="underline">Privacy Policy</p>
+        <a href="#" class="underline">FAQs and Delivery</a>
+        <a href="#" class="underline">Privacy Policy</a>
       </div>
       <div>
         <p class="lg:hidden mt-4 md:mt-0">Soilboy © 2022</p>

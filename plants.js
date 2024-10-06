@@ -8,6 +8,11 @@ function change() {
   }
 }
 
+function closeLogin() {
+  console.log("loginout")
+logsec.classList.add("hidden");
+}
+
 const main = document.querySelector("main");
 const parentlist = document.querySelector("#parentlist");
 const childlist = document.querySelector("#childlist");
@@ -15,6 +20,17 @@ let isMouseOverPlants = false;
 let isMouseOverList = false;
 
 const menuItems = document.getElementById("menu-items");
+
+const loginElement = document.getElementById("logele");
+const logSection = document.getElementById("logsec");
+// const close = document.getElementById("close");
+function showLogin() {
+  logSection.classList.remove("hidden");
+  //  loginElement.classList.remove("hidden")
+}
+
+
+
 window.addEventListener("resize", function () {
   console.log("im in");
   if (window.innerWidth > 700) {
@@ -22,7 +38,6 @@ window.addEventListener("resize", function () {
     console.log("Im inside resize");
     main.classList.remove("hidden");
   }
-
 });
 function checkMouseLeave() {
   if (!isMouseOverPlants && !isMouseOverList) {
@@ -35,7 +50,7 @@ function pEnter() {
   isMouseOverPlants = true;
   childlist.classList.remove("hidden");
   childlist.classList.add("block");
-  console.log(childlist)
+  console.log(childlist);
   console.log("entered p");
 }
 
@@ -43,8 +58,7 @@ function pLeave() {
   isMouseOverPlants = false;
   checkMouseLeave();
   console.log("left p");
-  console.log(childlist)
-
+  console.log(childlist);
 }
 
 function cEnter() {
@@ -114,7 +128,7 @@ card.forEach((item) => {
       </a>
       <div class="flex items-center justify-between">
           <span class="text-3xl font-bold text-gray-900 dark:text-white">${item.price}</span>
-          <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+          <a href="#" class="text-white p-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
       </div>
   </div>
 </div>
