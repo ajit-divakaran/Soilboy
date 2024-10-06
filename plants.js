@@ -124,10 +124,10 @@ card.forEach((item) => {
   </a>
   <div class="px-5 pb-5">
       <a href="#">
-          <h5 class="text-xl font-semibold tracking-tight text-gray-900">${item.product}</h5>
+          <h5 class="text-xl font-semibold text-[#44403c]">${item.product}</h5>
       </a>
       <div class="flex items-center justify-between mt-2">
-          <span class="text-3xl md:text-2xl lg:text-3xl font-bold text-gray-900 "><span class="text-sm">SGD</span>${item.price}</span>
+          <span class="text-3xl smd:text-2xl maxv:text-3xl font-bold text-[#292524] "><span class="text-sm text-[#292524]">SGD</span>${item.price}</span>
         <button class="text-white text-base smd:text-xxs smd:ml-4 xlg:text-xs xxlg:text-base bg-blue-800 hover:bg-blue-900 rounded-lg px-5 py-2 text-center" >Add to cart</button>
       </div>
   </div>
